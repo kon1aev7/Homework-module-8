@@ -56,6 +56,5 @@ export const SelectUncompletedTodos = (state) => {
 };
 
 //auth
-
-export const selectUser = (state) => state.auth.user;
-export const selectIsLoggedIn = (state) => state.auth.selectIsLoggedIn;
+export const selectUser = state => state.auth.user;
+export const selectIsLoggedIn = state => state.auth.isLoggedIn;
