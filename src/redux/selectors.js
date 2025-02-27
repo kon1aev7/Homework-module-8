@@ -54,3 +54,8 @@ export const SelectUncompletedTodos = (state) => {
   const todos = selectTodos(state);
   return todos.reduce((total, curr) => (curr.completed ? total : total + 1), 0);
 };
+
+//auth
+
+export const selectUser = (state) => state.auth.user;
+export const selectIsLoggedIn = (state) => state.auth.selectIsLoggedIn;
