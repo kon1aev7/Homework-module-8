@@ -9,7 +9,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { refreshUser } from "../redux/authOperations";
 import { selectIsRefreshing } from "../redux/selectors";
-import PrivateRoute from "./PrivateRoute";
+import PrivateRoute from "../config/routes/PrivateRoute";
+
+import RestrictedRoute from "../config/routes/RestrictedRoute";
 const App = () => {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
@@ -30,7 +32,10 @@ const App = () => {
           }
         />
       </Route>
-      <Route path="/login" element={<Login />} />
+      <Route
+        path="/login"
+        element={<RestrictedRoute component={<Login />} redirectTo="/todos" />}
+      />
       <Route path="/register" element={<Register />} />
       <Route path="*" element={<NotFound />} />
     </Routes>

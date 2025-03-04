@@ -20,6 +20,7 @@ const persistConfig = {
   storage,
   whitelist: ["token"],
 };
+const stage = import.meta.env.MODE;
 
 const persistedReducer = persistReducer(persistConfig, authReducer);
 export const store = configureStore({
@@ -34,6 +35,7 @@ export const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
+  devTools: stage === "development" ? true : false,
 });
 
 export let persistor = persistStore(store);
